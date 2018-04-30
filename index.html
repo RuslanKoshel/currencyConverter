@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Конвертер валютent</title>
+</head>
+<style>
+div{
+	width: 150px;
+	background: #C0C0C0FF;
+	border-radius: 10px 10px 0px 0px;
+	padding: 10px 10px 5px 20px;
+	margin: 20px  20px -20px 10px;
+	font-size: 18px; 
+	font-family:  Georgia, 'Times New Roman', Times, serif;
+}
+
+img{
+	//padding: 150px -150px 35px 20px;
+	margin: 5px 5px -5px 10px;
+	width: 45px;
+	height: 20px;
+}
+#block{
+	width: 270px;
+	height: 130px;
+	background: #C0C0C0FF;
+	border-radius: 0px 10px 10px 10px;
+	margin: 20px 20px 20px 10px;
+	padding: 25px  5px 5px 20px;
+
+}
+label{
+	//margin-top: -25px;
+	margin: 0px 0px 0px 25px;
+	font-size: 14px; 
+	font-family:  Georgia, 'Times New Roman', Times, serif;
+}
+input{
+
+	width: 85px;
+	margin: 5px 10px 0px 15px;
+	border-radius:10px;
+}
+
+#block input[type="text"]{
+	padding-left: 15px;
+	font-size: 14px; 
+	font-family: Tahoma; 
+}
+
+</style>
+<body>
+			<div>Конвертер валют</div>
+
+	<div  id="block">
+		<label>Меняю</label></br>
+		<input id="x" type="text" name="" value="0.00"  onkeyup ="converter()">
+		<select id="exchange" onClick="flag()" onmouseup="converter()"> 
+			<option value="UAH">UAH</option>
+			<option value="EUR">EUR</option>
+			<option value="USD">USD</option>
+			<option value="BYN">BYN</option>
+			<option value="RUB">RUB</option>
+		</select>
+	    <img id="imgExchange" ></br>
+		<label>Получаю</label></br>
+
+		<input  id="y" type="text" name="" value="0.00">
+
+		<select id="get" onClick="flag1()" onmouseup="converter()"> 
+			<option value="UAH">UAH</option>
+			<option value="EUR">EUR</option>
+			<option value="USD">USD</option>
+			<option value="BYN">BYN</option>
+			<option value="RUB">RUB</option>
+		</select>
+		<img id="imgGet" ></br>
+	</div>
+	
+</body>
+<script> 
+
+	function flag() {
+		
+		var exchange =  document.getElementById('exchange').value;
+	    var exchange1 =  document.getElementById('imgExchange');
+
+	
+		if (exchange == "UAH") {
+			var img = document.createElement("IMG");
+			img.id = "imgExchange";
+	        img.src = "img/flags-mini/ua.gif";
+			exchange1.parentNode.replaceChild(img,exchange1);
+		}else if (exchange == "EUR") {
+			var img = document.createElement("IMG");
+			img.id = "imgExchange";
+	        img.src = "img/flags-mini/eu.gif";
+			exchange1.parentNode.replaceChild(img,exchange1);
+		}else if (exchange == "USD") {
+			var img = document.createElement("IMG");
+			img.id = "imgExchange";
+	        img.src = "img/flags-mini/us.png";
+			exchange1.parentNode.replaceChild(img,exchange1);
+		}else if (exchange == "RUB") {
+			var img = document.createElement("IMG");
+			img.id = "imgExchange";
+	        img.src = "img/flags-mini/ru.png";
+			exchange1.parentNode.replaceChild(img,exchange1);
+		}else if (exchange == "BYN") {
+			var img = document.createElement("IMG");
+			img.id = "imgExchange";
+	        img.src = "img/flags-mini/by.png";
+			exchange1.parentNode.replaceChild(img,exchange1);
+		}
+}
+
+	function flag1() {
+		
+		var exchange =  document.getElementById('get').value;
+	    var exchange1 =  document.getElementById('imgGet');
+
+	
+		if (exchange == "UAH") {
+			var img = document.createElement("IMG");
+			img.id = "imgGet";
+	        img.src = "img/flags-mini/ua.png";
+			exchange1.parentNode.replaceChild(img,exchange1);
+		}else if (exchange == "EUR") {
+			var img = document.createElement("IMG");
+			img.id = "imgGet";
+	        img.src = "img/flags-mini/eu.gif";
+			exchange1.parentNode.replaceChild(img,exchange1);
+		}else if (exchange == "USD") {
+			var img = document.createElement("IMG");
+			img.id = "imgGet";
+	        img.src = "img/flags-mini/us.png";
+			exchange1.parentNode.replaceChild(img,exchange1);
+		}else if (exchange == "RUB") {
+			var img = document.createElement("IMG");
+			img.id = "imgGet";
+	        img.src = "img/flags-mini/ru.png";
+			exchange1.parentNode.replaceChild(img,exchange1);
+		}else if (exchange == "BYN") {
+			var img = document.createElement("IMG");
+			img.id = "imgGet";
+	        img.src = "img/flags-mini/by.png";
+			exchange1.parentNode.replaceChild(img,exchange1);
+		}	
+
+		 //  console.log(exchange1);
+	//alert(result);
+
+}
+
+function converter(){
+
+	var uаh = 1;
+	var usd = 0.03912;
+	var eur = 0.03164;
+	var byn = 769.25;
+	var rub = 2.40760;
+
+
+	var x = document.getElementById('x').value;
+	var y = document.getElementById('y').value;
+	var exchange =  document.getElementById('exchange').value;
+	var exch =  document.getElementById('get').value;
+	var y1 = document.getElementById('y');
+
+	if (exchange == "UAH" && exch == "EUR") {
+		var summ = Number(x)*eur;
+		var summ1 = document.createElement("input");
+		summ1.id = "y";
+		summ1.type = "text";
+		summ1.value = summ.toFixed(3);
+		y1.parentNode.replaceChild(summ1,y1);
+	}else if(exchange == "UAH" && exch == "USD") {
+		var summ = Number(x)/usd;
+		var summ1 = document.createElement("input");
+		summ1.id = "y";
+		summ1.type = "text";
+		summ1.value = summ.toFixed(3);
+		y1.parentNode.replaceChild(summ1,y1);
+	}else if(exchange == "UAH" && exch == "BYN") {
+		var summ = Number(x)*byn;
+		var summ1 = document.createElement("input");
+		summ1.id = "y";
+		summ1.type = "text";
+		summ1.value = summ.toFixed(3);
+		y1.parentNode.replaceChild(summ1,y1);
+	}else if(exchange == "UAH" && exch == "RUB") {
+		var summ = Number(x)*rub;
+		var summ1 = document.createElement("input");
+		summ1.id = "y";
+		summ1.type = "text";
+		summ1.value = summ.toFixed(3);
+		y1.parentNode.replaceChild(summ1,y1);
+	}else if(exchange == "UAH" && exch == "UAH") {
+		var summ = Number(x);
+		var summ1 = document.createElement("input");
+		summ1.id = "y";
+		summ1.type = "text";
+		summ1.value = summ.toFixed(3);
+		y1.parentNode.replaceChild(summ1,y1);
+
+	}else if (exchange == "EUR" && exch == "UAH") {
+		var summ = Number(x)/eur;
+		var summ1 = document.createElement("input");
+		summ1.id = "y";
+		summ1.type = "text";
+		summ1.value = summ.toFixed(3);
+		y1.parentNode.replaceChild(summ1,y1);
+	}else if(exchange == "EUR" && exch == "EUR") {
+		var summ = Number(x);
+		var summ1 = document.createElement("input");
+		summ1.id = "y";
+		summ1.type = "text";
+		summ1.value = summ.toFixed(3);
+		y1.parentNode.replaceChild(summ1,y1);
+	}else if(exchange == "EUR" && exch == "USD") {
+		var summ = Number(x)/(eur/usd);
+		var summ1 = document.createElement("input");
+		summ1.id = "y";
+		summ1.type = "text";
+		summ1.value = summ.toFixed(3);
+		y1.parentNode.replaceChild(summ1,y1);
+	}else if(exchange == "EUR" && exch == "BYN") {
+		var summ = Number(x)/(eur/byn);
+		var summ1 = document.createElement("input");
+		summ1.id = "y";
+		summ1.type = "text";
+		summ1.value = summ.toFixed(3);
+		y1.parentNode.replaceChild(summ1,y1);
+	}else if(exchange == "EUR" && exch == "RUB") {
+		var summ = Number(x)/(eur/rub);
+		var summ1 = document.createElement("input");
+		summ1.id = "y";
+		summ1.type = "text";
+		summ1.value = summ.toFixed(3);
+		y1.parentNode.replaceChild(summ1,y1);
+
+	}else if (exchange == "USD" && exch == "UAH") {
+		var summ = Number(x)/usd;
+		var summ1 = document.createElement("input");
+		summ1.id = "y";
+		summ1.type = "text";
+		summ1.value = summ;
+		y1.parentNode.replaceChild(summ1,y1);
+	}else if(exchange == "USD" && exch == "EUR") {
+		var summ = Number(x)/(usd/eur);
+		var summ1 = document.createElement("input");
+		summ1.id = "y";
+		summ1.type = "text";
+		summ1.value = summ.toFixed(3);
+		y1.parentNode.replaceChild(summ1,y1);
+	}else if(exchange == "USD" && exch == "USD") {
+		var summ = Number(x);
+		var summ1 = document.createElement("input");
+		summ1.id = "y";
+		summ1.type = "text";
+		summ1.value = summ;
+		y1.parentNode.replaceChild(summ1,y1);
+	}else if(exchange == "USD" && exch == "BYN") {
+		var summ = Number(x)/(usd/byn);
+		var summ1 = document.createElement("input");
+		summ1.id = "y";
+		summ1.type = "text";
+		summ1.value = summ.toFixed(3);
+		y1.parentNode.replaceChild(summ1,y1);
+	}else if(exchange == "USD" && exch == "RUB") {
+		var summ = Number(x)/(usd/rub);
+		var summ1 = document.createElement("input");
+		summ1.id = "y";
+		summ1.type = "text";
+		summ1.value = summ.toFixed(3);
+		y1.parentNode.replaceChild(summ1,y1);
+	
+
+	}else if (exchange == "BYN" && exch == "UAH") {
+		var summ = Number(x)*byn;
+		var summ1 = document.createElement("input");
+		summ1.id = "y";
+		summ1.type = "text";
+		summ1.value = summ.toFixed(3);
+		y1.parentNode.replaceChild(summ1,y1);
+	}else if(exchange == "BYN" && exch == "EUR") {
+		var summ = Number(x)/(byn/eur);
+		var summ1 = document.createElement("input");
+		summ1.id = "y";
+		summ1.type = "text";
+		summ1.value = summ.toFixed(3);
+		y1.parentNode.replaceChild(summ1,y1);
+	}else if(exchange == "BYN" && exch == "USD") {
+		var summ = Number(x)/(byn/usd);
+		var summ1 = document.createElement("input");
+		summ1.id = "y";
+		summ1.type = "text";
+		summ1.value = summ.toFixed(3);
+		y1.parentNode.replaceChild(summ1,y1);
+	}else if(exchange == "BYN" && exch == "BYN") {
+		var summ = Number(x);
+		var summ1 = document.createElement("input");
+		summ1.id = "y";
+		summ1.type = "text";
+		summ1.value = summ.toFixed(3);
+		y1.parentNode.replaceChild(summ1,y1);
+	}else if(exchange == "BYN" && exch == "RUB") {
+		var summ = Number(x)/(byn/rub);
+		var summ1 = document.createElement("input");
+		summ1.id = "y";
+		summ1.type = "text";
+		summ1.value = summ.toFixed(3);
+		y1.parentNode.replaceChild(summ1,y1);
+
+
+	}else if (exchange == "RUB" && exch == "UAH") {
+		var summ = Number(x)/rub;
+		var summ1 = document.createElement("input");
+		summ1.id = "y";
+		summ1.type = "text";
+		summ1.value = summ.toFixed(3);
+		y1.parentNode.replaceChild(summ1,y1);
+	}else if(exchange == "RUB" && exch == "EUR") {
+		var summ = Number(x)/(rub/eur);
+		var summ1 = document.createElement("input");
+		summ1.id = "y";
+		summ1.type = "text";
+		summ1.value = summ.toFixed(3);
+		y1.parentNode.replaceChild(summ1,y1);
+	}else if(exchange == "RUB" && exch == "USD") {
+		var summ = Number(x)/(rub/usd);
+		var summ1 = document.createElement("input");
+		summ1.id = "y";
+		summ1.type = "text";
+		summ1.value = summ.toFixed(3);
+		y1.parentNode.replaceChild(summ1,y1);
+	}else if(exchange == "RUB" && exch == "BYN") {
+		var summ = Number(x)/(rub/byn);
+		var summ1 = document.createElement("input");
+		summ1.id = "y";
+		summ1.type = "text";
+		summ1.value = summ.toFixed(3);
+		y1.parentNode.replaceChild(summ1,y1);
+	}else if(exchange == "RUB" && exch == "RUB") {
+		var summ = Number(x);
+		var summ1 = document.createElement("input");
+		summ1.id = "y";
+		summ1.type = "text";
+		summ1.value = summ.toFixed(3);
+		y1.parentNode.replaceChild(summ1,y1);
+	}
+	//var summ = Number(x)+125;
+	
+	//alert(summ);
+
+}
+</script>
+</html>
+
+<!-- <script type="text/javascript">	require(['jquery', 'local/converter/currency/main'], function($, Converter) {
+		if ($('#cc').is(':visible')) {
+			setTimeout(function() {
+				var converter = new Converter({
+					el: '#cc',
+					language: 'ru',
+					apiUrl: '//resources.finance.ua/api/rest'
+				});
+
+				converter.render({"source":98,"date":1523307600,"rates":[{"id":"VND","title":"\u0432\u044c\u0435\u0442\u043d\u0430\u043c\u0441\u043a\u0438\u0435 \u0434\u043e\u043d\u0433\u0438","rate_bid":"0.0012","rate_ask":"0.0013"},
+					{"id":"LBP","title":"\u043b\u0438\u0432\u0430\u043d\u0441\u043a\u0438\u0435 \u0444\u0443\u043d\u0442\u044b","rate_bid":"0.0113","rate_ask":"0.0180"},
+					{"id":"KRW","title":"\u0432\u043e\u043d\u044b \u0420\u0435\u0441\u043f\u0443\u0431\u043b\u0438\u043a\u0438 \u041a\u043e\u0440\u0435\u044f","rate_bid":"0.0173","rate_ask":"0.0250"},
+					{"id":"CLP","title":"\u0447\u0438\u043b\u0438\u0439\u0441\u043a\u0438\u0435 \u043f\u0435\u0441\u043e","rate_bid":"0.0250","rate_ask":"0.0490"},{"id":"AMD","title":"\u0430\u0440\u043c\u044f\u043d\u0441\u043a\u0438\u0435 \u0434\u0440\u0430\u043c\u044b","rate_bid":"0.0490","rate_ask":"0.0599"},
+					{"id":"KZT","title":"\u043a\u0430\u0437\u0430\u0445\u0441\u0442\u0430\u043d\u0441\u043a\u0438\u0435 \u0442\u0435\u043d\u0433\u0435","rate_bid":"0.0680","rate_ask":"0.0800"},
+					{"id":"HUF","title":"\u0432\u0435\u043d\u0433\u0435\u0440\u0441\u043a\u0438\u0435 \u0444\u043e\u0440\u0438\u043d\u0442\u044b","rate_bid":"0.1000","rate_ask":"0.1200"},{"id":"DZD","title":"\u0430\u043b\u0436\u0438\u0440\u0441\u043a\u0438\u0435 \u0434\u0438\u043d\u0430\u0440\u044b","rate_bid":"0.1300","rate_ask":"0.2000"},{"id":"JPY","title":"\u044f\u043f\u043e\u043d\u0441\u043a\u0438\u0435 \u0438\u0435\u043d\u044b","rate_bid":"0.2300","rate_ask":"0.2500"},{"id":"PKR","title":"\u043f\u0430\u043a\u0438\u0441\u0442\u0430\u043d\u0441\u043a\u0438\u0435 \u0440\u0443\u043f\u0438\u0438","rate_bid":"0.1520","rate_ask":"0.3100"},{"id":"KGS","title":"\u043a\u044b\u0440\u0433\u044b\u0437\u0441\u043a\u0438\u0435 \u0441\u043e\u043c\u044b","rate_bid":"0.2100","rate_ask":"0.4000"},{"id":"INR","title":"\u0438\u043d\u0434\u0438\u0439\u0441\u043a\u0438\u0435 \u0440\u0443\u043f\u0438\u0438","rate_bid":"0.3115","rate_ask":"0.4300"},{"id":"RUB","title":"\u0440\u043e\u0441\u0441\u0438\u0439\u0441\u043a\u0438\u0435 \u0440\u0443\u0431\u043b\u0438","rate_bid":"0.4000","rate_ask":"0.4500","sortOrder":4},{"id":"THB","title":"\u0442\u0430\u0438\u043b\u0430\u043d\u0434\u0441\u043a\u0438\u0435 \u0431\u0430\u0442\u044b","rate_bid":"0.7100","rate_ask":"0.8500"},{"id":"TWD","title":"\u043d\u043e\u0432\u044b\u0435 \u0442\u0430\u0439\u0432\u0430\u043d\u0441\u043a\u0438\u0435 \u0434\u043e\u043b\u043b\u0430\u0440\u044b","rate_bid":"0.5700","rate_ask":"0.9000"},{"id":"CZK","title":"\u0447\u0435\u0448\u0441\u043a\u0438\u0435 \u043a\u0440\u043e\u043d\u044b","rate_bid":"1.2500","rate_ask":"1.3000"},{"id":"MXN","title":"\u043c\u0435\u043a\u0441\u0438\u043a\u0430\u043d\u0441\u043a\u0438\u0435 \u043d\u043e\u0432\u044b\u0435 \u043f\u0435\u0441\u043e","rate_bid":"1.1050","rate_ask":"1.4000"},{"id":"EGP","title":"\u0435\u0433\u0438\u043f\u0435\u0442\u0441\u043a\u0438\u0435 \u0444\u0443\u043d\u0442\u044b","rate_bid":"1.1080","rate_ask":"1.4000"},{"id":"MDL","title":"\u043c\u043e\u043b\u0434\u0430\u0432\u0441\u043a\u0438\u0435 \u043b\u0435\u0438","rate_bid":"1.3300","rate_ask":"1.6000"},{"id":"TMT","title":"\u043d\u043e\u0432\u044b\u0435 \u0442\u0443\u0440\u043a\u043c\u0435\u043d\u0441\u043a\u0438\u0435 \u043c\u0430\u043d\u0430\u0442\u044b","rate_bid":"0.9000","rate_ask":"2.2000"},{"id":"SEK","title":"\u0448\u0432\u0435\u0434\u0441\u043a\u0438\u0435 \u043a\u0440\u043e\u043d\u044b","rate_bid":"2.9000","rate_ask":"3.1000"},{"id":"NOK","title":"\u043d\u043e\u0440\u0432\u0435\u0436\u0441\u043a\u0438\u0435 \u043a\u0440\u043e\u043d\u044b","rate_bid":"3.1000","rate_ask":"3.3500"},{"id":"HKD","title":"\u0433\u043e\u043d\u043a\u043e\u043d\u0433\u0441\u043a\u0438\u0435 \u0434\u043e\u043b\u043b\u0430\u0440\u044b","rate_bid":"3.0400","rate_ask":"3.5450"},{"id":"TJS","title":"\u0442\u0430\u0434\u0436\u0438\u043a\u0441\u043a\u0438\u0435 \u0441\u043e\u043c\u043e\u043d\u0438","rate_bid":"1.7500","rate_ask":"3.6000"},{"id":"CNY","title":"\u044e\u0430\u043d\u0438 \u0416\u0435\u043d\u044c\u043c\u0438\u043d\u044c\u0431\u0438 (\u041a\u0438\u0442\u0430\u0439)","rate_bid":"3.8300","rate_ask":"4.1000"},{"id":"DKK","title":"\u0434\u0430\u0442\u0441\u043a\u0438\u0435 \u043a\u0440\u043e\u043d\u044b","rate_bid":"4.1100","rate_ask":"4.3500"},{"id":"HRK","title":"\u0445\u043e\u0440\u0432\u0430\u0442\u0441\u043a\u0438\u0435 \u043a\u0443\u043d\u044b","rate_bid":"3.1100","rate_ask":"4.4000"},{"id":"TRY","title":"\u043d\u043e\u0432\u044b\u0435 \u0442\u0443\u0440\u0435\u0446\u043a\u0438\u0435 \u043b\u0438\u0440\u044b","rate_bid":"6.1000","rate_ask":"7.0000"},{"id":"RON","title":"\u043d\u043e\u0432\u044b\u0435 \u0440\u0443\u043c\u044b\u043d\u0441\u043a\u0438\u0435 \u043b\u0435\u0438","rate_bid":"6.5500","rate_ask":"6.9000"},{"id":"SAR","title":"\u0441\u0430\u0443\u0434\u043e\u0432\u0441\u043a\u0438\u0435 \u0440\u0438\u044f\u043b\u044b","rate_bid":"6.3500","rate_ask":"7.0000"},{"id":"AED","title":"\u0434\u0438\u0440\u0445\u0430\u043c\u044b \u041e\u0410\u042d","rate_bid":"6.7500","rate_ask":"7.0500"},{"id":"ILS","title":"\u043d\u043e\u0432\u044b\u0435 \u0438\u0437\u0440\u0430\u0438\u043b\u044c\u0441\u043a\u0438\u0435 \u0448\u0435\u043a\u0435\u043b\u0438","rate_bid":"7.0500","rate_ask":"7.5000"},{"id":"PLN","title":"\u043f\u043e\u043b\u044c\u0441\u043a\u0438\u0435 \u0437\u043b\u043e\u0442\u044b\u0435","rate_bid":"7.4000","rate_ask":"7.7000"},{"id":"BRL","title":"\u0431\u0440\u0430\u0437\u0438\u043b\u044c\u0441\u043a\u0438\u0435 \u0440\u0435\u0430\u043b\u044b","rate_bid":"5.4910","rate_ask":"7.7000"},{"id":"GEL","title":"\u0433\u0440\u0443\u0437\u0438\u043d\u0441\u043a\u0438\u0435 \u043b\u0430\u0440\u0438","rate_bid":"10.1200","rate_ask":"10.6000"},{"id":"BYN","title":"\u0431\u0435\u043b\u0430\u0440\u0443\u0441\u043a\u0438\u0435 \u0440\u0443\u0431\u043b\u0438","rate_bid":"12.9500","rate_ask":"13.4000","sortOrder":5},{"id":"AZN","title":"\u0430\u0437\u0435\u0440\u0431\u0430\u0439\u0434\u0436\u0430\u043d\u0441\u043a\u0438\u0435 \u043c\u0430\u043d\u0430\u0442\u044b","rate_bid":"13.9900","rate_ask":"15.5000"},{"id":"BGN","title":"\u0431\u043e\u043b\u0433\u0430\u0440\u0441\u043a\u0438\u0435 \u043b\u0435\u0432\u044b","rate_bid":"15.5600","rate_ask":"16.6500"},{"id":"NZD","title":"\u043d\u043e\u0432\u043e\u0437\u0435\u043b\u0430\u043d\u0434\u0441\u043a\u0438\u0435 \u0434\u043e\u043b\u043b\u0430\u0440\u044b","rate_bid":"18.3800","rate_ask":"20.4400"},{"id":"AUD","title":"\u0430\u0432\u0441\u0442\u0440\u0430\u043b\u0438\u0439\u0441\u043a\u0438\u0435 \u0434\u043e\u043b\u043b\u0430\u0440\u044b","rate_bid":"19.5000","rate_ask":"20.1000"},{"id":"CAD","title":"\u043a\u0430\u043d\u0430\u0434\u0441\u043a\u0438\u0435 \u0434\u043e\u043b\u043b\u0430\u0440\u044b","rate_bid":"19.7000","rate_ask":"20.5000"},{"id":"SGD","title":"\u0441\u0438\u043d\u0433\u0430\u043f\u0443\u0440\u0441\u043a\u0438\u0435 \u0434\u043e\u043b\u043b\u0430\u0440\u044b","rate_bid":"18.6500","rate_ask":"20.7000"},{"id":"USD","title":"\u0434\u043e\u043b\u043b\u0430\u0440\u044b \u0421\u0428\u0410","rate_bid":"25.9000","rate_ask":"26.1500","sortOrder":3},{"id":"CHF","title":"\u0448\u0432\u0435\u0439\u0446\u0430\u0440\u0441\u043a\u0438\u0435 \u0444\u0440\u0430\u043d\u043a\u0438","rate_bid":"27.1000","rate_ask":"28.0000"},{"id":"EUR","title":"\u0415\u0412\u0420\u041e","rate_bid":"31.8000","rate_ask":"32.3000","sortOrder":2},{"id":"GBP","title":"\u0430\u043d\u0433\u043b\u0438\u0439\u0441\u043a\u0438\u0435 \u0444\u0443\u043d\u0442\u044b \u0441\u0442\u0435\u0440\u043b\u0438\u043d\u0433\u043e\u0432","rate_bid":"36.3500","rate_ask":"37.0000"},{"id":"KWD","title":"\u043a\u0443\u0432\u0435\u0439\u0442\u0441\u043a\u0438\u0435 \u0434\u0438\u043d\u0430\u0440\u044b","rate_bid":"49.2003","rate_ask":"90.0000"},{"id":"UAH","title":"\u0443\u043a\u0440\u0430\u0438\u043d\u0441\u043a\u0438\u0435 \u0433\u0440\u0438\u0432\u043d\u0438","rate_bid":"1.0000","rate_ask":"1.0000","sortOrder":1}],"currencyFrom":"USD","currencyTo":"UAH"});
+			}, 100);
+		}
+	});
+</script> -->
+
